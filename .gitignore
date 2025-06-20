@@ -34,3 +34,4 @@ coverage/
 # Miscellaneous
 *.bak
 *.old
+uploads/
