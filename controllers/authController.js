@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+/* global process */
 
 const generateToken = (user) => {
   return jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
@@ -11,12 +12,10 @@ export const register = async (req, res) => {
   try {
     const user = await User.create(req.body);
     const token = generateToken(user);
-    res
-      .status(201)
-      .json({
-        user: { id: user._id, name: user.name, email: user.email },
-        token,
-      });
+    res.status(201).json({
+      user: { id: user._id, name: user.name, email: user.email },
+      token,
+    });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

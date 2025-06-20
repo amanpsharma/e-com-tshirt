@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+/* global process */
 
 export const protect = async (req, res, next) => {
   let token = req.headers.authorization;
@@ -13,7 +14,7 @@ export const protect = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = await User.findById(decoded.id).select("-password");
     next();
-  } catch (err) {
+  } catch {
     res.status(401).json({ message: "Token not valid" });
   }
 };

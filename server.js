@@ -6,6 +6,8 @@ import productRoutes from "./routes/productRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 
+/* global process */
+
 dotenv.config();
 connectDB();
 
