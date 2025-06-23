@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: e-com-tshirt
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
