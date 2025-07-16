@@ -1,4 +1,10 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run lint
+echo "Running linter..."
+if ! npm run lint; then
+    echo "Linting failed. Commit aborted."
+    exit 1
+fi
+
+echo "Linting passed. Proceeding with commit."
